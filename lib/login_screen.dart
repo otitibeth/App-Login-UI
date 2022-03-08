@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Happy To See You Again',
+          'Welcome Back',
           style: TextStyle(fontWeight: FontWeight.w900),
         ),
       ),
