@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './screens/landing_screen.dart';
 import './screens/forgot_password_screen.dart';
 import './screens/register_screen.dart';
 import './screens/login_screen.dart';
@@ -19,20 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: const LoginScreen(),
+      home: const LandingScreen(),
       routes: {
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
         RegisterScreen.routeName: (ctx) => const RegisterScreen(),
         ForgotPasswordScreen.routeName: (ctx) => const ForgotPasswordScreen(),
       },
     );
   }
 }
-
-// class LoginUI extends StatelessWidget {
-//   const LoginUI({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const LoginScreen();
-//   }
-// }

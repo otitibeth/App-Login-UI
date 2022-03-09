@@ -5,7 +5,7 @@ import './register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
-  static const routeName = '/';
+  static const routeName = '/LoginScreen';
 
   Widget buildText(String text) {
     return Row(

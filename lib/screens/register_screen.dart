@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page_ui/screens/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
       // appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Center(
             child: Column(
               children: [
@@ -109,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/');
+                        Navigator.of(context).pushNamed(LoginScreen.routeName);
                       },
                       child: const Text('Login'),
                     ),
