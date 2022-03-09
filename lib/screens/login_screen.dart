@@ -1,23 +1,50 @@
 import 'package:flutter/material.dart';
 
+import './forgot_password_screen.dart';
+import './register_screen.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  static const routeName = '/';
+
+  Widget buildText(String text) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          text,
+          style: const TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              color: Colors.deepOrangeAccent,
+              letterSpacing: 2),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Welcome Back',
-          style: TextStyle(fontWeight: FontWeight.w900),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Welcome Back',
+      //     style: TextStyle(fontWeight: FontWeight.w900),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Center(
             child: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
           child: Column(
             children: [
+              Column(
+                children: [
+                  buildText('WELCOME'),
+                  buildText('BACK!'),
+                ],
+              ),
+              const SizedBox(height: 15),
               const Text(
                 'LOgIfY',
                 style: TextStyle(
@@ -26,11 +53,18 @@ class LoginScreen extends StatelessWidget {
                     fontWeight: FontWeight.w900,
                     color: Colors.deepOrange),
               ),
-              const SizedBox(height: 25),
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
+                Text('LOGIN!',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepOrangeAccent)),
+              ]),
+              const SizedBox(height: 10),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  label: Text('email address'),
+                  label: Text('Email Address'),
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.email),
                 ),
@@ -40,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  label: Text('password'),
+                  label: Text('Password'),
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.lock),
                   suffixIcon: Icon(Icons.remove_red_eye),
@@ -53,7 +87,10 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(ForgotPasswordScreen.routeName);
+                    },
                     child: const Text('Forgot Password?'),
                   ),
                 ],
@@ -76,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   child: const Text(
                     'LOGIN',
-                    style: TextStyle(fontSize: 20),
+                    // style: TextStyle(fontSize: 20),
                   ),
                 ),
               ),
@@ -105,7 +142,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(RegisterScreen.routeName);
+                    },
                     child: const Text('Register Account'),
                   ),
                 ],
