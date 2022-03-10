@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page_ui/screens/home_screen.dart';
 
 import './forgot_password_screen.dart';
 import './register_screen.dart';
@@ -110,7 +111,9 @@ class LoginScreen extends StatelessWidget {
                   ]),
                 ),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(HomeScreen.routeName);
+                  },
                   child: const Text(
                     'LOGIN',
                     // style: TextStyle(fontSize: 20),

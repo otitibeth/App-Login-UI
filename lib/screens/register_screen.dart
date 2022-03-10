@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page_ui/screens/home_screen.dart';
 import 'package:login_page_ui/screens/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                     buildText('JOIN US!'),
                   ],
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 20),
                 const Text(
                   'LOgIfY',
                   style: TextStyle(
@@ -46,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                       color: Colors.deepOrange),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 5),
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
                   Text('SIGN UP!',
                       style: TextStyle(
@@ -82,12 +83,24 @@ class RegisterScreen extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                 ),
+                const SizedBox(height: 15),
+                TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: const InputDecoration(
+                    label: Text('Confirm Password'),
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.remove_red_eye),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 25),
                 Container(
                   height: 60,
                   width: double.infinity,
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(HomeScreen.routeName);
+                    },
                     child: const Text('SIGN UP'),
                   ),
                   decoration: BoxDecoration(
@@ -99,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                     ]),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 const Divider(height: 30, color: Colors.black87),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

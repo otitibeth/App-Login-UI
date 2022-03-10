@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './login_screen.dart';
+
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
   static const routeName = '/forgotPassword';
@@ -63,7 +65,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/');
+                      Navigator.of(context).pushNamed(LoginScreen.routeName);
                     },
                     child: const Text('Back to Login')),
               ],

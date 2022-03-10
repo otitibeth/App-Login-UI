@@ -32,7 +32,7 @@ class LandingScreen extends StatelessWidget {
           ),
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
           child: Container(
             decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
             child: Padding(
