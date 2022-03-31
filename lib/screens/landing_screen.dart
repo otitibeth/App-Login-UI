@@ -24,82 +24,91 @@ class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/happy.jpg'),
-            fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 1,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/happy.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 30),
-              child: Center(
-                child: Column(
-                  children: [
-                    const Text(
-                      'LOgIfY',
-                      style: TextStyle(
-                          fontFamily: 'Charm',
-                          fontSize: 70,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.deepOrange),
-                    ),
-                    const SizedBox(height: 30),
-                    const Text(
-                      'Create Your Style',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Style is something we all have,',
-                      softWrap: true,
-                      style: TextStyle(color: Colors.white70),
-                    ),
-                    const Text(
-                      'all we need to do is find it.',
-                      softWrap: true,
-                      style: TextStyle(color: Colors.white70),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Get Started Now!',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500),
-                      softWrap: true,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 70, horizontal: 20),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            buildTextButton(
-                              'Signup',
-                              () => Navigator.of(context)
-                                  .pushNamed(RegisterScreen.routeName),
-                            ),
-                            const SizedBox(width: 25),
-                            buildTextButton(
-                              'Login',
-                              () => Navigator.of(context)
-                                  .pushNamed(LoginScreen.routeName),
-                            ),
-                          ],
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+            child: Container(
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+                child: Center(
+                  child: Expanded(
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          'LOgIfY',
+                          style: TextStyle(
+                              fontFamily: 'Charm',
+                              fontSize: 70,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.deepOrange),
                         ),
-                      ),
+                        const SizedBox(height: 30),
+                        const Text(
+                          'Create Your Style',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 35,
+                              color: Colors.white),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Style is something we all have,',
+                          softWrap: true,
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                        const Text(
+                          'all we need to do is find it.',
+                          softWrap: true,
+                          style: TextStyle(color: Colors.white70),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Get Started Now!',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                          softWrap: true,
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 70, horizontal: 20),
+                            child: SizedBox(
+                              // width: MediaQuery.of(context).size.width * 1,
+                              child: Row(
+                                children: [
+                                  buildTextButton(
+                                    'Signup',
+                                    () => Navigator.of(context)
+                                        .pushNamed(RegisterScreen.routeName),
+                                  ),
+                                  const SizedBox(width: 25),
+                                  buildTextButton(
+                                    'Login',
+                                    () => Navigator.of(context)
+                                        .pushNamed(LoginScreen.routeName),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

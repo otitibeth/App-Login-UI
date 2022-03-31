@@ -2,10 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:login_page_ui/screens/home_screen.dart';
 import 'package:login_page_ui/screens/login_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
   static const routeName = '/register';
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final _emailFocusNode = FocusNode();
+  final _passwordFocusNode = FocusNode();
+  final _confirmPasswordFocusNode = FocusNode();
+  final _passwordController = TextEditingController();
   Widget buildText(String text) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -64,6 +73,15 @@ class RegisterScreen extends StatelessWidget {
                         Icons.person,
                       ),
                       border: OutlineInputBorder()),
+                  textInputAction: TextInputAction.next,
+                  onFieldSubmitted: (value) =>
+                      FocusScope.of(context).requestFocus(_emailFocusNode),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter first name and surname';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 15),
                 TextFormField(
@@ -72,6 +90,20 @@ class RegisterScreen extends StatelessWidget {
                       label: Text('Email Adress'),
                       prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder()),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _emailFocusNode,
+                  onFieldSubmitted: (value) =>
+                      FocusScope.of(context).requestFocus(_passwordFocusNode),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter email!';
+                    }
+                    if (!value.endsWith('@gmail.com') ||
+                        !value.endsWith('@yahoo.com')) {
+                      return 'Enter a Gmail or a Yahoo mail';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 15),
                 TextFormField(
@@ -82,6 +114,31 @@ class RegisterScreen extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye),
                     border: OutlineInputBorder(),
                   ),
+                  controller: _passwordController,
+                  obscureText: true,
+                  textInputAction: TextInputAction.next,
+                  focusNode: _passwordFocusNode,
+                  onFieldSubmitted: (value) {
+                    FocusScope.of(context)
+                        .requestFocus(_confirmPasswordFocusNode);
+                  },
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Create Password';
+                    }
+                    // if (!value.contains() //one capslock
+                    //     &&
+                    //     !value.contains() //one numer
+                    //     &&
+                    //     !value.contains()) // one other character
+                    // {
+                    //   return 'Enter atleast 1 capital letter, 1 number and one character';
+                    // }
+                    if (double.parse(value) <= 9) {
+                      return 'password must contain atleast 10 characters';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 15),
                 TextFormField(
@@ -92,6 +149,15 @@ class RegisterScreen extends StatelessWidget {
                     suffixIcon: Icon(Icons.remove_red_eye),
                     border: OutlineInputBorder(),
                   ),
+                  obscureText: true,
+                  textInputAction: TextInputAction.done,
+                  focusNode: _confirmPasswordFocusNode,
+                  validator: (value) {
+                    if (value != _passwordController) {
+                      return 'Passwords don\'t match';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 25),
                 Container(

@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import './login_screen.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
   static const routeName = '/forgotPassword';
 
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +49,17 @@ class ForgotPasswordScreen extends StatelessWidget {
                       label: Text('Email Adress'),
                       prefixIcon: Icon(Icons.email),
                       border: OutlineInputBorder()),
+                  textInputAction: TextInputAction.done,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter email!';
+                    }
+                    if (!value.endsWith('@gmail.com') ||
+                        !value.endsWith('@yahoo.com')) {
+                      return 'Enter a registered email';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 25),
                 Container(
